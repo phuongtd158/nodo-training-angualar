@@ -1,0 +1,104 @@
+<div class="product-form-title">
+    <h1 class="text-center main-content-label mt-4">{{title}}</h1>
+</div>
+<div class="card-body">
+    <div class="row">
+        <div class="col-11 m-auto">
+            <form [formGroup]="borrowBookForm">
+                <mat-form-field class="w-100" appearance="outline" formGroupName="banDoc">
+                    <mat-label>Bạn đọc</mat-label>
+                    <mat-select formControlName="id">
+                        <mat-option *ngFor="let reader of readers" [value]="reader.id">
+                            {{reader.tenBanDoc}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error class="text-danger"
+                               *ngIf="!borrowBookForm.get('banDoc')?.valid && borrowBookForm.get('banDoc')?.touched">
+                        Bạn đọc không được để trống
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="outline" formGroupName="sach">
+                    <mat-label>Sách</mat-label>
+                    <mat-select formControlName="id">
+                        <mat-option *ngFor="let book of books" [value]="book.id">
+                            {{book.tenSach}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error class="text-danger"
+                               *ngIf="!borrowBookForm.get('sach')?.valid && borrowBookForm.get('sach')?.touched">
+                        Sách không được để trống
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Số lượng</mat-label>
+                    <input type="number"
+                           min="1"
+                           max="9"
+                           formControlName="soLuong"
+                           matInput
+                    >
+                    <mat-error class="text-danger"
+                               *ngIf="borrowBookForm.get('soLuong')?.hasError('required') && borrowBookForm.get('soLuong')?.touched">
+                        Số lượng không được để trống
+                    </mat-error>
+                    <mat-error class="text-danger"
+                               *ngIf="(borrowBookForm.get('soLuong')?.hasError('min') ||
+                                               borrowBookForm.get('soLuong')?.hasError('max')) &&
+                                               borrowBookForm.get('soLuong')?.touched">
+                        Tổng số sách phải lớn hơn 1 và nhỏ hơn 9
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Ngày giờ mượn</mat-label>
+                    <input type="datetime-local"
+                           formControlName="ngayGioMuon"
+                           matInput
+                    >
+                    <mat-error class="text-danger"
+                               *ngIf="!borrowBookForm.get('ngayGioMuon')?.valid && borrowBookForm.get('ngayGioMuon')?.touched">
+                        Ngày giờ mượn không được để trống
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Ngày giờ trả</mat-label>
+                    <input type="datetime-local"
+                           formControlName="ngayGioTra"
+                           matInput
+                    >
+                    <mat-error class="text-danger"
+                               *ngIf="!borrowBookForm.get('ngayGioTra')?.valid && borrowBookForm.get('ngayGioTra')?.touched">
+                        Ngày giờ trả không được để trống
+                    </mat-error>
+                </mat-form-field>
+                <div class="form-group">
+                    <mat-label>Trạng thái</mat-label>
+                    <mat-radio-group formControlName="trangThai">
+                        <mat-radio-button [value]="1" class="ms-4" >
+                            Đang mượn
+                        </mat-radio-button>
+                        <mat-radio-button [value]="0" class="ms-4">
+                            Đã trả
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Ghi chú</mat-label>
+                    <input type="text"
+                           formControlName="ghiChu"
+                           matInput
+                    >
+                </mat-form-field>
+
+                <div class="action-button mt-3 d-flex justify-content-center gap-3">
+                    <button mat-raised-button color="warn" (click)="onDismiss()">
+                        <span><span class="fe fe-x mg-r-2"></span>Đóng</span>
+                    </button>
+                    <button mat-raised-button color="primary" (click)="save()">
+                        <span><span class="fe fe-check mg-r-2"></span>Lưu</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

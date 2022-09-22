@@ -1,0 +1,97 @@
+<div class="product-form-title">
+    <h1 class="text-center main-content-label mt-4">{{title}}</h1>
+</div>
+<div class="card-body">
+    <div class="row">
+        <div class="col-11 m-auto">
+            <form [formGroup]="bookForm">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Tên sách</mat-label>
+                    <input type="text"
+                           formControlName="tenSach"
+                           matInput
+                    >
+                    <mat-error class="text-danger"
+                               *ngIf="!bookForm.get('tenSach')?.valid && bookForm.get('tenSach')?.touched">
+                        Tên sách không được để trống
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Chủ đề</mat-label>
+                    <input type="text"
+                           formControlName="chuDe"
+                           matInput
+                    >
+                    <mat-error class="text-danger"
+                               *ngIf="!bookForm.get('chuDe')?.valid && bookForm.get('chuDe')?.touched">
+                        Chủ đề không được để trống
+                    </mat-error>
+                </mat-form-field>
+                <div class="row">
+                    <mat-form-field class="col-6" formGroupName="tacGia" appearance="outline">
+                        <mat-label>Tác giả</mat-label>
+                        <mat-select formControlName="id">
+                            <mat-option *ngFor="let author of authors"
+                                        [value]="author.id">
+                                {{author.tenTacGia}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error class="text-danger"
+                                   *ngIf="bookForm.get('tacGia.id')?.hasError('required') && bookForm.get('tacGia.id')?.touched">
+                            Tác giả không được để trống
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="col-6" formGroupName="nhaXuatBan" appearance="outline">
+                        <mat-label>NXB</mat-label>
+                        <mat-select formControlName="id">
+                            <mat-option *ngFor="let publisher of publishers"
+                                        [value]="publisher.id">
+                                {{publisher.tenNxb}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error class="text-danger"
+                                   *ngIf="bookForm.get('nhaXuatBan.id')?.hasError('required') && bookForm.get('nhaXuatBan.id')?.touched">
+                            Nhà xuất bản không được để trống
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Tổng số sách</mat-label>
+                    <input type="number"
+                           min="1"
+                           max="9999"
+                           formControlName="tongSoSach"
+                           matInput
+                    >
+                    <mat-error class="text-danger"
+                               *ngIf="bookForm.get('tongSoSach')?.hasError('required') && bookForm.get('tongSoSach')?.touched">
+                        Tổng số sách không được để trống
+                    </mat-error>
+                    <mat-error class="text-danger"
+                               *ngIf="(bookForm.get('tongSoSach')?.hasError('min') ||
+                                               bookForm.get('tongSoSach')?.hasError('max')) &&
+                                               bookForm.get('tongSoSach')?.touched">
+                        Tổng số sách phải lớn hơn 0 và nhỏ hơn 9999
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Mô tả</mat-label>
+                    <textarea type="text"
+                              formControlName="moTa"
+                              matInput
+                              rows="7"
+                    ></textarea>
+                </mat-form-field>
+                <div class="action-button mt-3 d-flex justify-content-center gap-3">
+                    <button mat-raised-button color="warn" (click)="onDismiss()">
+                        <span><span class="fe fe-x mg-r-2"></span>Đóng</span>
+                    </button>
+                    <button mat-raised-button color="primary" (click)="save()">
+                        <span><span class="fe fe-check mg-r-2"></span>Lưu</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

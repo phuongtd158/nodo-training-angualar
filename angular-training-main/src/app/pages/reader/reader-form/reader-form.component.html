@@ -1,0 +1,83 @@
+<div class="product-form-title">
+    <h1 class="text-center main-content-label mt-4">{{title}}</h1>
+</div>
+<div class="card-body">
+    <div class="row">
+        <div class="col-11 m-auto">
+            <form [formGroup]="readerForm">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Tên bạn đọc</mat-label>
+                    <input type="text"
+                           formControlName="tenBanDoc"
+                           matInput
+                    >
+                    <mat-error class="text-danger"
+                               *ngIf="!readerForm.get('tenBanDoc')?.valid && readerForm.get('tenBanDoc')?.touched">
+                        Tên bạn đọc không được để trống
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>SĐT</mat-label>
+                    <input type="text"
+                           formControlName="sdt"
+                           matInput
+                    >
+                    <mat-error class="text-danger"
+                               *ngIf="!readerForm.get('sdt')?.valid && readerForm.get('sdt')?.touched">
+                        SĐT không được để trống
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Địa chỉ</mat-label>
+                    <input type="text"
+                           formControlName="diaChi"
+                           matInput
+                    >
+                    <mat-error class="text-danger"
+                               *ngIf="!readerForm.get('diaChi')?.valid && readerForm.get('diaChi')?.touched">
+                        Địa chỉ không được để trống
+                    </mat-error>
+                </mat-form-field>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Ngày sinh</mat-label>
+                            <input matInput formControlName="ngaySinh" [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error class="text-danger"
+                                       *ngIf="!readerForm.get('ngaySinh')?.valid && readerForm.get('ngaySinh')?.touched">
+                                Ngày sinh không được để trống
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Hạng</mat-label>
+                            <mat-select formControlName="hang">
+                                <mat-option [value]="0">Đồng</mat-option>
+                                <mat-option [value]="1">Bạc</mat-option>
+                                <mat-option [value]="2">Vàng</mat-option>
+                                <mat-option [value]="3">Kim cuơng</mat-option>
+                            </mat-select>
+                            <mat-error class="text-danger"
+                                       *ngIf="!readerForm.get('hang')?.valid && readerForm.get('hang')?.touched">
+                                Hạng không được để trống
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="action-button mt-3 d-flex justify-content-center gap-3">
+                    <button mat-raised-button color="warn" (click)="onDismiss()">
+                        <span><span class="fe fe-x mg-r-2"></span>Đóng</span>
+                    </button>
+                    <button mat-raised-button color="primary" (click)="save()">
+                        <span><span class="fe fe-check mg-r-2"></span>Lưu</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
