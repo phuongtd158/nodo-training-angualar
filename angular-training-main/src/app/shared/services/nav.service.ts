@@ -83,40 +83,47 @@ export class NavService implements OnDestroy {
     }
 
     MENUITEMS: Menu[] = [
+        // {
+        //     title: 'Tác giả',
+        //     icon: 'user',
+        //     type: 'link',
+        //     active: true,
+        //     path: '/pages/author-management',
+        // },
+        // {
+        //     title: 'Nhà xuẩt bản',
+        //     icon: 'home',
+        //     type: 'link',
+        //     active: true,
+        //     path: '/pages/publisher-management',
+        // },
+        // {
+        //     title: 'Sách',
+        //     icon: 'book',
+        //     type: 'link',
+        //     active: true,
+        //     path: '/pages/book-management',
+        // },
+        // {
+        //     title: 'Bạn đọc',
+        //     icon: 'users',
+        //     type: 'link',
+        //     active: true,
+        //     path: '/pages/reader-management',
+        // },
+        // {
+        //     title: 'Mượn sách',
+        //     icon: 'book-open',
+        //     type: 'link',
+        //     active: true,
+        //     path: '/pages/borrow-book-management',
+        // }
         {
-            title: 'Tác giả',
-            icon: 'user',
+            title: 'Danh mục',
+            icon: 'box',
             type: 'link',
             active: true,
-            path: '/pages/author-management',
-        },
-        {
-            title: 'Nhà xuẩt bản',
-            icon: 'home',
-            type: 'link',
-            active: true,
-            path: '/pages/publisher-management',
-        },
-        {
-            title: 'Sách',
-            icon: 'book',
-            type: 'link',
-            active: true,
-            path: '/pages/book-management',
-        },
-        {
-            title: 'Bạn đọc',
-            icon: 'users',
-            type: 'link',
-            active: true,
-            path: '/pages/reader-management',
-        },
-        {
-            title: 'Mượn sách',
-            icon: 'book-open',
-            type: 'link',
-            active: true,
-            path: '/pages/borrow-book-management',
+            path: '/pages/option',
         }
         // {
         //     title: 'Quản lý mapping danh mục',

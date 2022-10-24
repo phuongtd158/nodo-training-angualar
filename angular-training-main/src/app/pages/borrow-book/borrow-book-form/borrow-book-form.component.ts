@@ -26,6 +26,9 @@ export class BorrowBookFormComponent implements OnInit {
         sach: this.fb.group({
             id: ['', [Validators.required]]
         }),
+        category:this.fb.group({
+            id: ['',]
+        }),
         soLuong: ['', [Validators.required, Validators.min(1), Validators.max(9)]],
         ngayGioMuon: ['', [Validators.required]],
         ngayGioTra: ['', [Validators.required]],

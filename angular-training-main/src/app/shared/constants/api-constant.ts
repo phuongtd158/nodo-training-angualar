@@ -10,4 +10,6 @@ export const ApiConstant = {
     book: 'http://localhost:8080/api/sach',
     reader: 'http://localhost:8080/api/bandoc',
     borrowBook: 'http://localhost:8080/api/muonsach',
+    optionSet: 'http://localhost:8080/api/option-set',
+    optionSetValue: 'http://localhost:8080/api/option-set-value',
 };

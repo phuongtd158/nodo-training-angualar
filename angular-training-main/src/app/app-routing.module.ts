@@ -8,7 +8,7 @@ import {Error404Component} from "./pages/authentication/error404/error404.compon
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/pages/author-management',
+        redirectTo: '/pages/option',
         pathMatch: 'full'
     },
     {

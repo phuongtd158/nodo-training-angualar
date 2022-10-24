@@ -119,10 +119,11 @@ export class ApiService {
     deletePublisher(id: number): Observable<any> {
         return this.http.delete(`${ApiConstant.publisher}/${id}`, httpOptions);
     }
+
     //End Publisher
 
     //Book
-    getBook(id: any):Observable<any>{
+    getBook(id: any): Observable<any> {
         return this.http.get(`${ApiConstant.book}/${id}`, httpOptions)
     }
 
@@ -141,6 +142,7 @@ export class ApiService {
     deleteBook(id: number): Observable<any> {
         return this.http.delete(`${ApiConstant.book}/${id}`, httpOptions);
     }
+
     //End Book
 
     //Reader
@@ -159,6 +161,7 @@ export class ApiService {
     deleteReader(id: number): Observable<any> {
         return this.http.delete(`${ApiConstant.reader}/${id}`, httpOptions);
     }
+
     //End Reader
 
     //BorrowBook
@@ -177,5 +180,49 @@ export class ApiService {
     deleteBorrowBook(id: number): Observable<any> {
         return this.http.delete(`${ApiConstant.borrowBook}/${id}`, httpOptions);
     }
+
     //End BorrowBook
+
+    //Option set
+    getOptionSet(id: number): Observable<any> {
+        return this.http.get(`${ApiConstant.optionSet}/${id}`);
+    }
+
+    getAllOptionSet(): Observable<any> {
+        return this.http.get(ApiConstant.optionSet);
+    }
+
+    createOptionSet(data: any): Observable<any> {
+        return this.http.post(ApiConstant.optionSet, data);
+    }
+
+    updateOptionSet(id: number, data: any) {
+        return this.http.put(`${ApiConstant.optionSet}/${id}`, data);
+    }
+
+    searchOptionSet(param: any) {
+        return this.http.get(`${ApiConstant.optionSet}/search?${param}`);
+    }
+
+    //Option set
+
+    //Option set value
+    getAllOptionSetValueById(id: number): Observable<any> {
+        return this.http.get(`${ApiConstant.optionSetValue}/${id}`);
+    }
+
+    createOptionSetValue(data: any): Observable<any> {
+        return this.http.post(ApiConstant.optionSetValue, data);
+    }
+
+    updateOptionSetValue(id: number, data: any) {
+        return this.http.put(`${ApiConstant.optionSetValue}/${id}`, data);
+    }
+
+    searchOptionSetValue(param: any) {
+        return this.http.get(`${ApiConstant.optionSetValue}/search?${param}`);
+    }
+
+    //Option set value
+
 }

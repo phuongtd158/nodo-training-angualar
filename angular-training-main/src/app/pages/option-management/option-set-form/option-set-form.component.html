@@ -1,0 +1,95 @@
+<div class="product-form-title">
+    <h1 class="text-center main-content-label mt-4">{{title}}</h1>
+</div>
+<div class="card-body">
+    <div class="row">
+        <div class="col-11 m-auto">
+            <form [formGroup]="optionSetForm">
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Mã</mat-label>
+                            <input type="text"
+                                   formControlName="code"
+                                   matInput
+                            >
+                            <mat-error class="text-danger"
+                                       *ngIf="optionSetForm.get('code')?.hasError('required') && optionSetForm.get('code')?.touched">
+                                Mã loại không được để trống
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Tên loại danh mục</mat-label>
+                            <input type="text"
+                                   formControlName="name"
+                                   matInput
+                            >
+                            <mat-error class="text-danger"
+                                       *ngIf="optionSetForm.get('name')?.hasError('required') && optionSetForm.get('name')?.touched">
+                                Tên loại không được để trống
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Ngày hiệu lực</mat-label>
+                            <input matInput formControlName="effectiveDate" [matDatepicker]="picker1">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                            <mat-error class="text-danger"
+                                       *ngIf="optionSetForm.get('effectiveDate')?.hasError('required') && optionSetForm.get('effectiveDate')?.touched">
+                                Ngày hiệu không được để trống
+                            </mat-error>
+                            <mat-hint class="text-danger"
+                                      *ngIf="optionSetForm.errors?.['isCheckDate'] && (optionSetForm.get('effectiveDate')?.touched || optionSetForm.get('expirationDate')?.touched)">
+                                Ngày bắt đầu phải nhỏ hơn ngày kết thúc!
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Ngày hết hiệu lực</mat-label>
+                            <input matInput formControlName="expirationDate" [matDatepicker]="picker2">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                            <mat-error class="text-danger"
+                                       *ngIf="optionSetForm.get('expirationDate')?.hasError('required') && optionSetForm.get('expirationDate')?.touched">
+                                Ngày hết hiệu lực không được để trống
+                            </mat-error>
+                            <mat-hint class="text-danger"
+                                      *ngIf="optionSetForm.errors?.['isCheckDate'] && (optionSetForm.get('effectiveDate')?.touched || optionSetForm.get('expirationDate')?.touched)">
+                                Ngày bắt đầu phải nhỏ hơn ngày kết thúc!
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Trạng thái</mat-label>
+                            <mat-select formControlName="status">
+                                <mat-option [value]="1">Hoạt động</mat-option>
+                                <mat-option [value]="0">Không hoạt động</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="action-button mt-3 d-flex justify-content-end gap-3">
+                    <button mat-raised-button color="warn" (click)="onDismiss()">
+                        <span><span class="fe fe-x mg-r-2"></span>Đóng</span>
+                    </button>
+                    <button mat-raised-button color="primary" (click)="save()">
+                        <span><span class="fe fe-check mg-r-2"></span>Lưu</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

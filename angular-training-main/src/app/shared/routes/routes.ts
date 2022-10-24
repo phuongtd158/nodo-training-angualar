@@ -85,5 +85,9 @@ export const content: Routes = [
     {
         path: 'borrow-book-management',
         loadChildren: () => import('../../pages/borrow-book/borrow-book.module').then(m => m.BorrowBookModule)
-    }
+    },
+    {
+        path: 'option',
+        loadChildren: () => import('../../pages/option-management/option-management.module').then(m => m.OptionManagementModule)
+    },
 ];
